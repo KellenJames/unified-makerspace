@@ -1,7 +1,8 @@
 import type { MakerspaceLocation } from "./types";
 
-export const api_endpoint =
-  import.meta.env.VITE_API_ENDPOINT || "https://api.cumaker.space";
+// export const api_endpoint =
+//   import.meta.env.VITE_API_ENDPOINT || "https://api.cumaker.space";
+export const api_endpoint = "https://m5k172xiw1.execute-api.us-east-1.amazonaws.com/prod";
 
 // currently `YEAR-MONTH-DAY, YYYY-MM-DD`
 export const format_date = (date: Date) => date.toISOString().split("T")[0];
