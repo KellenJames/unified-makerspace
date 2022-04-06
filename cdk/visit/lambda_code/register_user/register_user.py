@@ -39,9 +39,11 @@ class RegisterUserFunction():
                 'lastName': user_info['lastName'],
                 'Gender': user_info['Gender'],
                 'DOB': user_info['DOB'],
-                'Grad_date': user_info['Grad_Date'],
-                'Major': user_info['Major'],
-                'Minor': user_info['Minor']
+                'UserPosition': user_info['UserPosition'],
+                'GradSemester': user_info.get('GradSemester', ' '),
+                'GradYear': user_info.get('GradYear', ' '),
+                'Major': user_info.get('Major', []),
+                'Minor': user_info.get('Minor', [])
             },
         )
 
@@ -51,7 +53,7 @@ class RegisterUserFunction():
         HEADERS = {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Origin': os.environ["DOMAIN_NAME"],
+            'Access-Control-Allow-Origin': 'https://visit.cumaker.space',
             'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
         }
         if (request is None):
