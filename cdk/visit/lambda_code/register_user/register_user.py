@@ -31,6 +31,7 @@ class RegisterUserFunction():
         # Get the current date at which the user registers.
         timestamp = datetime.datetime.now()
 
+        
         response = self.users.put_item(
             Item={
                 'PK': user_info['username'],
@@ -39,7 +40,9 @@ class RegisterUserFunction():
                 'lastName': user_info['lastName'],
                 'Gender': user_info['Gender'],
                 'DOB': user_info['DOB'],
-                'Grad_date': user_info['Grad_Date'],
+                'UserPosition': user_info['UserPosition'],
+                'GradSemester': user_info['GradSemester'],
+                'GradYear': user_info['GradYear'],
                 'Major': user_info['Major'],
                 'Minor': user_info['Minor']
             },
