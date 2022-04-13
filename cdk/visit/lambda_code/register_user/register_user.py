@@ -58,7 +58,7 @@ class RegisterUserFunction():
         new_table_response = self.users.put_item(
             Item={
                 'username': user_info['username'],
-                'register_time': int(timestamp),
+                'register_time': str(timestamp),
                 'firstName': user_info['firstName'],
                 'lastName': user_info['lastName'],
                 'Gender': user_info['Gender'],
