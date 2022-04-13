@@ -18,6 +18,7 @@ class LogVisitFunction():
     """
 
     def __init__(self, table, ses_client):
+        # table = 'Database-Dev-DatabasevisitsDev35DFF03A-1OJBHMLQG7RGJ'
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
 
@@ -27,8 +28,10 @@ class LogVisitFunction():
             # Get the table name.
             TABLE_NAME = os.environ["TABLE_NAME"]
             # Get table objects
+            self.temp2 = dynamodb.Table('Database-Dev-DatabasevisitsDev35DFF03A-1OJBHMLQG7RGJ')
             self.visits = dynamodb.Table(TABLE_NAME)
         else:
+            self.temp2 = dynamodb.Table('Database-Dev-DatabasevisitsDev35DFF03A-1OJBHMLQG7RGJ')
             self.visits = table
 
         if ses_client is None:
@@ -38,7 +41,7 @@ class LogVisitFunction():
             self.client = ses_client
 
     def checkRegistration(self, current_user):
-        response = self.visits.query(
+        response = self.temp2.query(
             KeyConditionExpression=Key('PK').eq(current_user)
         )
         return response['Count']
@@ -103,7 +106,7 @@ class LogVisitFunction():
         visit_date = datetime.datetime.now().timestamp()
 
         # Add the item to the table.
-        response = self.visits.put_item(
+        response = self.temp2.put_item(
             # PK = Partition Key = Visit Date
             # SK = Sort Key = Username or Email Address
 

@@ -15,7 +15,6 @@ class RegisterUserFunction():
     """
 
     def __init__(self, table):
-
         if table is None:
             # Default Behavior in Prod
             # Get the service resource.
@@ -24,14 +23,16 @@ class RegisterUserFunction():
             TABLE_NAME = os.environ["TABLE_NAME"]
             # Get table objects
             self.users = dynamodb.Table(TABLE_NAME)
+            self.temp1 = dynamodb.Table('Database-Dev-DatabaseusersDev1792B49E-1NRTVG2OWZSHZ')
         else:
             self.users = table
+            self.temp1 = dynamodb.Table('Database-Dev-DatabaseusersDev1792B49E-1NRTVG2OWZSHZ')
 
     def addUserInfo(self, user_info):
         # Get the current date at which the user registers.
         timestamp = datetime.datetime.now()
 
-        response = self.users.put_item(
+        response = self.temp1.put_item(
             Item={
                 'PK': user_info['username'],
                 'SK': str(timestamp),
