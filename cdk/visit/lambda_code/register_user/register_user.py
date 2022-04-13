@@ -57,8 +57,8 @@ class RegisterUserFunction():
         # Add the user to the original table
         new_table_response = self.users.put_item(
             Item={
-                'PK': user_info['username'],
-                'SK': str(timestamp),
+                'username': user_info['username'],
+                'register_time': str(timestamp),
                 'firstName': user_info['firstName'],
                 'lastName': user_info['lastName'],
                 'Gender': user_info['Gender'],
@@ -72,7 +72,8 @@ class RegisterUserFunction():
         )
 
         # TODO: Decide between the response to return.
-        return original_response['ResponseMetadata']['HTTPStatusCode']
+        # return original_response['ResponseMetadata']['HTTPStatusCode']
+        return new_table_response['ResponseMetadata']['HTTPStatusCode']
 
     def handle_register_user_request(self, request, context):
         HEADERS = {
