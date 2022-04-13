@@ -49,7 +49,7 @@ class RegisterUserFunction():
                 'UserPosition': user_info['UserPosition'],
                 'GradSemester': user_info.get('GradSemester', ' '),
                 'GradYear': user_info.get('GradYear', ' '),
-                'Major': ', '.join(sorted(user_info['Major'])),
+                'Major': ', '.join(sorted(user_info.get('Major'))),
                 'Minor': ', '.join(sorted(user_info.get('Minor', [])))
             },
         )
@@ -66,7 +66,7 @@ class RegisterUserFunction():
                 'UserPosition': user_info['UserPosition'],
                 'GradSemester': user_info.get('GradSemester', ' '),
                 'GradYear': user_info.get('GradYear', ' '),
-                'Major': ', '.join(sorted(user_info['Major'])),
+                'Major': ', '.join(sorted(user_info.get('Major'))),
                 'Minor': ', '.join(sorted(user_info.get('Minor', [])))
             },
         )
