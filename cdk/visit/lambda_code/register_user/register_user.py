@@ -46,8 +46,10 @@ class RegisterUserFunction():
                 'lastName': user_info['lastName'],
                 'Gender': user_info['Gender'],
                 'DOB': user_info['DOB'],
-                'Grad_date': user_info['Grad_Date'],
-                'Major': user_info['Major'],
+                'UserPosition': user_info['UserPosition'],
+                'GradSemester': user_info.get('GradSemester', ' '),
+                'GradYear': user_info.get('GradYear', ' '),
+                'Major': user_info.get('Major', []),
                 'Minor': user_info.get('Minor', [])
             },
         )
@@ -55,14 +57,16 @@ class RegisterUserFunction():
         # Add the user to the original table
         new_table_response = self.users.put_item(
             Item={
-                'username': user_info['username'],
-                'register_time': str(timestamp),
+                'PK': user_info['username'],
+                'SK': str(timestamp),
                 'firstName': user_info['firstName'],
                 'lastName': user_info['lastName'],
                 'Gender': user_info['Gender'],
                 'DOB': user_info['DOB'],
-                'Grad_date': user_info['Grad_Date'],
-                'Major': user_info['Major'],
+                'UserPosition': user_info['UserPosition'],
+                'GradSemester': user_info.get('GradSemester', ' '),
+                'GradYear': user_info.get('GradYear', ' '),
+                'Major': user_info.get('Major', []),
                 'Minor': user_info.get('Minor', [])
             },
         )
